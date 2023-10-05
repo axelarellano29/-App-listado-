@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/borrar/5a/listAlumnos/app/src/main/res/drawable/ic_baseline_person_add_alt_1_24.xml" value="0.1745" />
         <entry key="..\:/borrar/5a/listAlumnos/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/borrar/5a/listAlumnos/app/src/main/res/layout/activity_main_nuevo.xml" value="0.1" />
         <entry key="..\:/borrar/5a/listAlumnos/app/src/main/res/layout/single_item.xml" value="0.4" />
+        <entry key="..\:/borrar/5a/listAlumnos/app/src/main/res/menu/options_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

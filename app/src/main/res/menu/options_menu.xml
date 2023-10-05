@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/borrar"
+        android:title="Eliminar" />
+
+    <item
+        android:id="@+id/editar"
+        android:title="Modificar" />
+
+    <item
+        android:id="@+id/ver"
+        android:title="Ver detalles" />
+</menu>

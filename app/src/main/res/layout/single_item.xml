@@ -48,6 +48,27 @@
                 android:textStyle="italic" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="0dp">
+
+            <!--Text view for showing the options menu-->
+            <TextView
+                android:id="@+id/textViewOptions"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="0dp"
+                android:gravity="center"
+                android:text=" ⋮ "
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
