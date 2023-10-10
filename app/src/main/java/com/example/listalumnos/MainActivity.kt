@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listalumnos.databinding.ActivityMainBinding
@@ -36,17 +35,14 @@ class MainActivity : AppCompatActivity() {
 
         if (cursor.moveToFirst()) {
             do {
-                idAlumno = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
                 val itemNom = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
                 val itemCue = cursor.getString(cursor.getColumnIndexOrThrow("nocuenta"))
                 val itemCorr = cursor.getString(cursor.getColumnIndexOrThrow("email"))
                 val itemImg = cursor.getString(cursor.getColumnIndexOrThrow("imagen"))
 
-                data.add(
-                    Alumno("$itemNom", "$itemCue", "$itemCorr", "$itemImg")
-                )
+                data.add(Alumno(id, itemNom, itemCue, itemCorr, itemImg))
             } while (cursor.moveToNext())
-
             db.close()
             cursor.close()
 
@@ -70,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         if (msje == "nuevo") {
             val insertIndex: Int = data.count()
-            data.add(insertIndex, Alumno("$nombre", "$cuenta", "$correo", "$image"))
+            data.add(insertIndex, Alumno(0, nombre!!, cuenta!!, correo!!, image!!)) // Assuming id is auto-increment, so passing 0
             rvAdapter.notifyItemInserted(insertIndex)
         }
 
@@ -94,6 +90,14 @@ class MainActivity : AppCompatActivity() {
                             .setTitle("Confirmar eliminación")
                             .setMessage("¿Estás seguro de que deseas eliminar este registro?")
                             .setPositiveButton("Sí") { _, _ ->
+                                // Obtener el id del alumno que se desea eliminar
+                                val alumnoId = data[position].id
+
+                                // Eliminar el registro de la base de datos
+                                val dbalumnos = DBHelperAlumno(this@MainActivity)
+                                dbalumnos.deleteAlumno(alumnoId)
+
+                                // Eliminar el registro de la lista y notificar al adaptador
                                 val tmpAlum = data[position]
                                 data.remove(tmpAlum)
                                 rvAdapter.notifyDataSetChanged()

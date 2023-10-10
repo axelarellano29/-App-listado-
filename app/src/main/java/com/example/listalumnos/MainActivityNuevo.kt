@@ -51,7 +51,6 @@ class MainActivityNuevo : AppCompatActivity() {
             //Creamos el Intent para pasarnos al MainActivity
             val intento2 = Intent(this,MainActivity::class.java)
             startActivity(intento2)
-
         }
     }
 }

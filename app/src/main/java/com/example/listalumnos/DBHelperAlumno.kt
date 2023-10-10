@@ -32,4 +32,11 @@ class DBHelperAlumno (context: Context) : SQLiteOpenHelper(context, DB_name, nul
     override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         onUpgrade(db, oldVersion, newVersion)
     }
+
+    //Función para insertar un registro
+    fun deleteAlumno(alumnoId: Int): Int {
+        val db = this.writableDatabase
+        return db.delete(nomTabla, "$keyId=?", arrayOf(alumnoId.toString()))
+    }
+
 }
